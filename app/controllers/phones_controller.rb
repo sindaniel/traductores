@@ -3,6 +3,15 @@ class PhonesController < ApplicationController
 
     @phones = Phone.where(:language_id=>params[:language_id]).all
     @language = Language.find_by_id(params[:language_id])
+
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @phones }
+    end
+
+
+
   end
 
   def new
@@ -15,7 +24,6 @@ class PhonesController < ApplicationController
 
   def create
 
-
     @phone = Phone.new(allowed_params)
     @phone.language_id = params[:language_id]
     if @phone.save
@@ -25,21 +33,16 @@ class PhonesController < ApplicationController
       render 'new'
     end
 
-
   end
 
   def edit
 
     @phone = Phone.find(params[:id])
-
-
     @language = Language.find_by_id(params[:language_id])
-
 
   end
 
   def update
-
 
     @phone = Phone.find(params[:id])
     if @phone.update_attributes(allowed_params)
@@ -48,8 +51,6 @@ class PhonesController < ApplicationController
     else
       render 'new'
     end
-
-
 
   end
 
@@ -62,9 +63,7 @@ class PhonesController < ApplicationController
     else
       render 'new'
     end
-
-
-
+    f
   end
 
 

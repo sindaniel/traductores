@@ -138,6 +138,8 @@ veces = veces.to_i
     code.idioma = idioma
 
 
+  if time > 1
+
 
     if code.save
       flash[:notice] = 'Información creada correctamente'
@@ -145,6 +147,11 @@ veces = veces.to_i
     else
       errores = errores + 1
     end
+
+
+    
+  end
+
 
 
 
